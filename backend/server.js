@@ -25,10 +25,12 @@ app.get("/", (request, response) => {
 });
 
 // Rutas
+app.use('api', api);
 app.use('/api/v1', autorRoutes);
 app.use("/api/v1", libroRoutes);
 app.use("/api/v1/auth", userRoutes);
 // 4. Lanzar el servidor
+const PORT = process.env.PORT || 3000;
 app.listen(3000, () => {
   console.log("Servidor corriendo en el puerto 3000");
 });

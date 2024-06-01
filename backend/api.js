@@ -2,11 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  // Crea un nuevo libro
+    const book = req.body;
+    const result = await createBook(book);
+    res.status(201).json(result);
 });
 
 router.get('/', async (req, res) => {
-    // Obtiene una lista de libros
+    const books = await getBooks();
+    res.send(books);
 });
 
 router.get('/:id', async (req, res) => {
