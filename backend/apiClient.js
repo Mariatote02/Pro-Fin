@@ -5,9 +5,24 @@ const apiClient = axios.create({
 });
 
 module.exports = {
-    createBook: (data) => apiClient.post('/', data),
-    getBooks: () => apiClient.get('/'),
-    getBookById: (id) => apiClient.get(`/${id}`),
-    updateBook: (id, data) => apiClient.put(`/${id}`, data),
-    deleteBook: (id) => apiClient.delete(`/${id}`),
+    createBook: async (data) => {
+        const result = await apiClient.post('/', data);
+        return result.data;
+    },
+    getBooks: async () => {
+        const result = await apiClient.get('/');
+        return result.data;
+    },
+    getBookById: async (id) => {
+        const result = await apiClient.get(`/${id}`);
+        return result.data;
+    },
+    updateBook: async (id, data) => {
+        const result = await apiClient.put(`/${id}`, data);
+        return result.data;
+    },
+    deleteBook: async (id) => {
+        const result = await apiClient.delete(`/${id}`);
+        return result.data;
+    },
 };

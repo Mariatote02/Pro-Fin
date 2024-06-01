@@ -5,6 +5,7 @@ const db = require("./config/database");
 const autorRoutes = require("./routes/autorRoutes");
 const libroRoutes = require("./routes/libroRoutes");
 const authRoutes = require("./routes/authRoutes");
+const api = require('./api');
 
 // 2. Crear una instancia de express
 const app = express();

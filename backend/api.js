@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { createBook, getBooks, getBookById, updateBook, deleteBook } = require('./apiClient');
 
 router.post('/', async (req, res) => {
     const book = req.body;
@@ -13,15 +14,22 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    // Obtiene un libro por ID
+    const id = req.params.id;
+    const book = await getBookById(id);
+    res.send(book);
 });
 
 router.put('/:id', async (req, res) => {
-    // Actualiza un libro por ID
+    const id = req.params.id;
+    const data = req.body;
+    const result = await updateBook(id, data);
+    res.send(result);
 });
 
 router.delete('/:id', async (req, res) => {
-    // Elimina un libro por ID
+    const id = req.params.id;
+    const result = await deleteBook(id);
+    res.send(result);
 });
 
 module.exports = router;
