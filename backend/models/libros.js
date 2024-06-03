@@ -16,7 +16,7 @@ const libroSchema = new mongoose.Schema({
   genero: { 
     type: String,
     required: true,
-    enum: ["Novela", "Cuento", "Ciencia Ficción"] // enum indica una lista de posibles valores
+    enum: ["Novela", "Cuento", "Ciencia Ficción", "misterio", "policiaco","suspenso"] // enum indica una lista de posibles valores
   }
   //añadir, califcacion, descripcion, si tiene adaptación, si pertenece a una serie...
 }, { timestamps: true });
