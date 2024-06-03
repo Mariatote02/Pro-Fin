@@ -1,4 +1,4 @@
-const uri = 'mongodb+srv://<username>:<password>@cluster0.mongodb.net/test?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://Morelus:1234@cluster0.tmaf4rl.mongodb.net/';
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
