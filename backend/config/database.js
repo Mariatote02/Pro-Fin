@@ -1,4 +1,4 @@
-const uri = 'mongodb+srv://Morelus:1234@cluster0.tmaf4rl.mongodb.net/';
+/*const uri = 'mongodb+srv://Morelus:1234@cluster0.tmaf4rl.mongodb.net/';
 // const uri = 'mongodb+srv://Morelus:1234@cluster0.tmaf4rl.mongodb.net/'
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -13,4 +13,10 @@ const collection = client.db("test").collection("devices");
 
 // Perform actions on the collection object
 
-client.close();
+client.close();*/
+
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://Morelus:1234@cluster0.tmaf4rl.mongodb.net/')
+    .then(db=>console.log('La base de datos esta conectada'))
+    .catch(err=>console.error(err));

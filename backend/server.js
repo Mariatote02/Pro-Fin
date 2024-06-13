@@ -2,9 +2,9 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./config/database");
-const autorRoutes = require("./routes/autorRoutes");
+const autorRoutes = require("./routes/autorRoute");
 const libroRoutes = require("./routes/libroRoutes");
-const authRoutes = require("./routes/authRoutes");
+//const authRoutes = require("./routes/authRoutes");
 const api = require('./api');
 
 // 2. Crear una instancia de express
@@ -14,7 +14,7 @@ app.use(cors());  // poder dar acceso a otras aplicaciones (react)
 app.use(express.json()); // json me permite recibir información en formato json
 
 // 2.2. Conectar Base de datos
-db.connect();
+//db.connect();
 
 // 3. Declarar una ruta
 app.get("/", (request, response) => {
@@ -29,7 +29,7 @@ app.get("/", (request, response) => {
 app.use('api', api);
 app.use('/api/v1', autorRoutes);
 app.use("/api/v1", libroRoutes);
-app.use("/api/v1/auth", userRoutes);
+//app.use("/api/v1/auth", userRoutes);
 // 4. Lanzar el servidor
 const PORT = process.env.PORT || 3000;
 app.listen(3000, () => {
