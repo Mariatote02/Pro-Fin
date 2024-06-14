@@ -7,7 +7,7 @@ const createLibro = async (req, res) => {
 
 // Get all
 const getAllLibros = async (req, res) => {
-  const libros = await Libro.find({ year: 1968 });
+  const libros = await Libro.find();
   res.send({ data: libros });
 }
 
