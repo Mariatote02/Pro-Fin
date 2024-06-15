@@ -7,7 +7,7 @@ dotenv.config(); // Configurar dotenv
 const db = require("./config/database");
 const autorRoutes = require("./routes/autorRoute");
 const libroRoutes = require("./routes/libroRoutes");
-//const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 // const api = require('./api');
 
 
@@ -34,7 +34,7 @@ app.get("/", (request, response) => {
 // app.use('api', api); // referencias circulares...
 app.use('/api/v1', autorRoutes);
 app.use("/api/v1", libroRoutes);
-//app.use("/api/v1/auth", userRoutes);
+app.use("/api/v1/auth", userRoutes);
 // 4. Lanzar el servidor
 const PORT = process.env.PORT || 3000;
 app.listen(3000, () => {
