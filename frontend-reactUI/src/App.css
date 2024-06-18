@@ -126,3 +126,50 @@
   correo, password y rol
   import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 */
+
+
+/* ESTILOS BIBLIOTECA Y LIBROS A MOSTRAR */
+.Bibli{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Bibli-titulo{
+  width: max-content;
+  padding: 10px 15px;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+.Bibli-contenedor{
+  width: 100%;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.Bibli-contenedor-ficha{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+.Bibli-contenedor-ficha-title{
+  width: max-content;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+.Bibli-contenedor-ficha-img{
+  width: 80%;
+  border-radius: 10%;
+}
+.Bibli-contenedor-ficha-descrip{
+  width: 70%;
+  font-size: 11px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}

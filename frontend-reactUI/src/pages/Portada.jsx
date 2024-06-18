@@ -1,5 +1,6 @@
 import perfil from '../img/perfil.jpeg'
 import clara from '../img/libreria.jpeg'
+import { Link } from 'react-router-dom'
 
 export default function Portada() {
   return (    <>
@@ -17,9 +18,12 @@ export default function Portada() {
       <div className='Hero'>
         <p className='Hero-texto'>Crea tu bitacora de libros, <br /> para llevar tu lectura en orden!</p>
         <div className='Hero-cont'>
-          <button className='Hero-cont-buton' >Registrarme</button>
-          <div className='Hero-cont-buton'><a href="./views/Login.jsx">Login</a></div>
-          <div className='Hero-cont-buton'><a href="">Login</a></div>
+          <Link to="/Registro" className='Hero-cont-buton'>
+            <p>Registrarme</p>
+          </Link>
+          <Link to="/Libros" className='Hero-cont-buton'>
+            <p>Login</p>
+          </Link>
         </div>
       </div>
       <div className='pictu'>

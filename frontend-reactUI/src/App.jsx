@@ -3,6 +3,9 @@ import './App.css'
 //import Enrutamiento from './componentes/Enrutamiento'
 import RoutesIndex from './routes/RoutesIndex'
 import { BrowserRouter } from 'react-router-dom'
+import { AuthContextProvider } from './contexts/AuthContext';
+import NavBar from './components/NavBar';
+
 
 function App() {
   
@@ -11,11 +14,11 @@ function App() {
     <>
       <BrowserRouter>
       {/* 2.3 Uso el componente que tiene al Provider del contexto */}
-        {/* <AuthContextProvider> */}
+        <AuthContextProvider >
           {/* Hijos / Children */}
-          {/* <NavBar /> */}
-          <RoutesIndex />
-        {/*</AuthContextProvider> */}
+            <NavBar /> 
+            <RoutesIndex />
+        </AuthContextProvider>
       </BrowserRouter>
     </>
   )
