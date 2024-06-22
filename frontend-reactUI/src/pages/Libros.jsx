@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllLibros } from "../services/libros";
+import img from '../img/perfil.jpeg'
 
 export default function Libros() {
   const [libros, setLibros] = useState([]);
@@ -17,23 +18,23 @@ export default function Libros() {
 
   return (
     <>
-      <h1>Libros</h1>
-      <div>
-        { libros.map((libro) => (
-          <p key={libro.id}>{libro.nombre}</p>
-        )) 
-        }
+      
         <section className="Bibli">
-          <h1 className="Bibli-titulo">Bibliote</h1>
+          <h1 className="Bibli-titulo"> Tú biblioteca</h1>
           <div className="Bibli-contenedor">
-            <div className="Bibli-contenedor-ficha">
-              <h4 className="Bibli-contenedor-ficha-title">titulo libro</h4>
-              <img className="Bibli-contenedor-ficha-img" src="../img/perfil.jpeg" alt="" />
-              <p className="Bibli-contenedor-ficha-descrip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque magnam autem delectus maxime cumque dicta temporibus repellendus molestiae.</p>
+          { libros.map((libro) => (
+            <div key={libro.id} className="Bibli-contenedor-ficha">
+              <h4 className="Bibli-contenedor-ficha-title">{libro.nombre}</h4>
+              <img className="Bibli-contenedor-ficha-img" src={img} alt="libro" />
+              <h3 className="Bibli-contenedor-ficha-auto">Autor:</h3>
+              <p className="Bibli-contenedor-ficha-descrip">{libro.autor}</p>
             </div>
+            )) 
+          }
+            
           </div>
         </section>
-      </div>
+
     </>
   )
 }
