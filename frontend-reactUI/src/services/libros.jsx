@@ -18,6 +18,10 @@ const getAllLibros = async () => {
 const createLibro = async (libro) => {
   const token = localStorage.getItem('token');
 
+  if (!token) {
+    throw new Error('No token provided');
+  }
+
   const response = await fetch(`${BASE_URL}/libros`, {
     method: "POST",
     headers: {
@@ -27,9 +31,58 @@ const createLibro = async (libro) => {
     body: JSON.stringify(libro),
   });
 
+  const existingLibros = await response.json();
+
+  if (existingLibros.find((l) => l.title === libro.title)) {
+    throw new Error('Libro already exists');
+  }
+
+  const responseCreate = await fetch(`${BASE_URL}/libros`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify(libro),
+  });
+
+  const { data } = await responseCreate.json();
+  console.log(data);
+  return data;
+};
+
+//eliminar libro
+const deleteLibro = async (id) => {
+  const token = localStorage.getItem('token');
+
+  const response = await fetch(`${BASE_URL}/libros/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+  });
+
   const { data } = await response.json();
   console.log(data);
   return data;
-}
+};
+//actualizar libros
+const updateLibro = async (id, libro) => {
+  const token = localStorage.getItem('token');
 
-export { getAllLibros, createLibro }
+  const response = await fetch(`${BASE_URL}/libros/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify(libro),
+  });
+
+  const { data } = await response.json();
+  console.log(data);
+  return data;
+};
+
+export { getAllLibros, createLibro, deleteLibro, updateLibro };

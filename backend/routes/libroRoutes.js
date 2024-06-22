@@ -7,5 +7,9 @@ const libroRoutes = express.Router();
 libroRoutes.post('/libros', libroController.createLibro);
 // Read / Consulta
 libroRoutes.get('/libros', libroController.getAllLibros);
+// Delete / Eliminar
+libroRoutes.delete('/libros/:id', libroController.deleteLibro);
+// Update / Actualizar
+libroRoutes.put('/libros/:id', libroController.updateLibro);
 
 module.exports = libroRoutes;
