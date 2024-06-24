@@ -5,7 +5,7 @@ import img from '../img/perfil.jpeg'
 export default function Libros() {
 
   //key
-const Libro = () => {
+const Libros = () => {
   const [libros, setLibros] = useState([]);
 
   useEffect(() => {
@@ -36,10 +36,16 @@ const Libro = () => {
     obtenerLibros();
   }, []);
 
-  const handleCreateLibro = async () => {
+  const handleCreateLibro = async (libro) => {
     try {
-      const newLibro = await createLibro(libros);
-      console.log(newLibro);
+      // Debe pasar los datos del nuevo libro a createLibro
+      const libroData = {
+        title: libro.title,
+        author: libro.author,
+        description: libro.description,
+      };
+      const createdLibro = await createLibro(libroData);
+      console.log(createdLibro);
       // actualizar la lista de libros o mostrar un mensaje de éxito
     } catch (error) {
       console.error(error);
@@ -47,9 +53,12 @@ const Libro = () => {
     }
   };
 
-  const handleUpdateLibro = async () => {
+  const handleUpdateLibro = async (libro) => {
     try {
-      const updatedLibro = await updateLibro(libros.id, libros);
+      const updatedLibro = await updateLibro(libro.id, {
+        title: libro.title,
+        author: libro.author,
+      });
       console.log(updatedLibro);
       // actualizar la lista de libros o mostrar un mensaje de éxito
     } catch (error) {
@@ -57,6 +66,17 @@ const Libro = () => {
       // mostrar un mensaje de error
     }
   };
+
+    const handleDeleteLibro = async (id) => {
+      try {
+        await deleteLibro(id);
+        setLibros(libros.filter(libro => libro.id!== id));
+        console.log(`Libro con id ${id} eliminado`);
+      } catch (error) {
+        console.error(error);
+        // mostrar un mensaje de error
+      }
+    };
 
 
   return (
@@ -81,6 +101,9 @@ const Libro = () => {
               <img className="Bibli-contenedor-ficha-img" src={img} alt="libro" />
               <h3 className="Bibli-contenedor-ficha-auto">Autor:</h3>
               <p className="Bibli-contenedor-ficha-descrip">{libro.autor}</p>
+              <button className="btn btn-success" onClick={handleDeleteLibro}>
+              Borrar
+              </button>
             </div>
             )) 
           }
